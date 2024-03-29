@@ -1,5 +1,8 @@
 def call() {
   node('workstation') {
+
+    common.codeCheckout()
+
     if(env.BRANCH_NAME == 'main') {
       common.codeQuality()
     }
