@@ -12,7 +12,10 @@ def integrationTests() {
 
 def codeQuality() {
   stage('Code Quality') {
-    echo 'OK'
+    // achieve
+    withCredentials([usernamePassword(credentialsId: 'SONARQUBE', passwordVariable: 'SONAR_PASS', usernameVariable: 'SONAR_USER')]) {
+      sh 'sonar-scanner -Dsonar.host.url=http://sonarqube-int.rdevopsb73.online:9000 -Dsonar.login=${SONAR_USER} -Dsonar.password=${SONAR_PASS} -Dsonar.projectKey=${service_name} -Dsonar.qualitygate.wait=true'
+    }
   }
 }
 
@@ -30,12 +33,14 @@ def sca() {
 
 def secretDetection() {
   stage('SECRET Detection') {
+    //achive
     echo 'OK'
   }
 }
 
 def artifactProduce() {
-  stage('SECRET Detection') {
+  stage('Produce Artifact') {
+    //achieve
     echo 'OK'
   }
 }
