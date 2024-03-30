@@ -16,6 +16,7 @@ def call() {
       common.unitTests()
       common.integrationTests()
       common.codeQuality()
+      common.codeDeploy()
     }
   }
 }

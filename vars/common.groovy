@@ -64,3 +64,14 @@ def codeCheckout() {
     )
   }
 }
+
+def codeDeploy() {
+  stage('Dev Deployment') {
+    sh '''
+      mkdir repo 
+      git clone https://github.com/raghudevopsb77/${service_name} repo
+      cd repo 
+      sed -i  "/739561048503.dkr.ecr.us-east-1.amazonaws.com\\/${service_name}/ c \\ \\ \\ \\ image: 739561048503.dkr.ecr.us-east-1.amazonaws.com\\/${service_name}:${TAG_NAME}"
+    '''
+  }
+}
