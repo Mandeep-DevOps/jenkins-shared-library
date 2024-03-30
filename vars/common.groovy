@@ -75,8 +75,9 @@ def codeDeploy() {
       cd /tmp/repo 
       sed -i  "/739561048503.dkr.ecr.us-east-1.amazonaws.com\\/${service_name}/ c \\ \\ \\ \\ image: 739561048503.dkr.ecr.us-east-1.amazonaws.com\\/${service_name}:${TAG_NAME}" helm/chart/values.yaml
       git add helm/chart/values.yaml
-      git commit -m "Change from Jenkins | Change Version Number to ${TAG_NAME}"
+      git commit -m "Change from Jenkins | Change Version Number to ${TAG_NAME}" || true
       git push
+      argocd app sync ${service_name}
     '''
     }
   }
