@@ -71,7 +71,10 @@ def codeDeploy() {
       mkdir repo 
       git clone https://github.com/raghudevopsb77/${service_name} repo
       cd repo 
-      sed -i  "/739561048503.dkr.ecr.us-east-1.amazonaws.com\\/${service_name}/ c \\ \\ \\ \\ image: 739561048503.dkr.ecr.us-east-1.amazonaws.com\\/${service_name}:${TAG_NAME}"
+      sed -i  "/739561048503.dkr.ecr.us-east-1.amazonaws.com\\/${service_name}/ c \\ \\ \\ \\ image: 739561048503.dkr.ecr.us-east-1.amazonaws.com\\/${service_name}:${TAG_NAME}" helm/chart/values.yaml
+      git add helm/chart/values.yaml
+      git commit -m "Change from Jenkins | Change Version Number to ${TAG_NAME}"
+      git push
     '''
   }
 }
