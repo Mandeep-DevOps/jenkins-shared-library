@@ -68,6 +68,7 @@ def codeCheckout() {
 def codeDeploy() {
   stage('Dev Deployment') {
     sh '''
+      rm -rf /tmp/repo
       mkdir -p /tmp/repo 
       git clone https://github.com/raghudevopsb77/${service_name} /tmp/repo
       cd /tmp/repo 
