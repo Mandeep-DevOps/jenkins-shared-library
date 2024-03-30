@@ -67,7 +67,7 @@ def codeCheckout() {
 
 def codeDeploy() {
   stage('Dev Deployment') {
-    withCredentials([usernamePassword(credentialsId: 'SONARQUBE', passwordVariable: 'GIT_PASS', usernameVariable: 'GIT_USER')]) {
+    withCredentials([usernamePassword(credentialsId: 'TOKEN', passwordVariable: 'GIT_PASS', usernameVariable: 'GIT_USER')]) {
       sh '''
       rm -rf /tmp/repo
       mkdir -p /tmp/repo 
