@@ -11,12 +11,12 @@ def call() {
       common.sca()
       common.secretDetection()
       common.artifactProduce()
+      common.codeDeploy()
     }
     else if(env.BRANCH_NAME ==~ '.*') {
       common.unitTests()
       common.integrationTests()
       common.codeQuality()
-      common.codeDeploy()
     }
   }
 }
